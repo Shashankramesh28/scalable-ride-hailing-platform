@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- Inherit from the main parent POM -->
+    <parent>
+        <groupId>com.ridesharing</groupId>
+        <artifactId>ride-sharing-backend</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>core-contracts</artifactId>
+    <name>Core Contracts</name>
+    <description>Shared DTOs and Event definitions for all microservices</description>
+    <packaging>jar</packaging>
+
+    <properties>
+        <!-- No Spring Boot plugin needed here, this is a plain library JAR -->
+        <spring-boot.repackage.skip>true</spring-boot.repackage.skip>
+    </properties>
+
+    <dependencies>
+        <!-- Add any dependencies needed for the DTOs themselves, if any. -->
+        <!-- For now, it likely needs none. -->
+    </dependencies>
+
+</project>
+
