@@ -13,6 +13,10 @@ A distributed, event-driven backend system that simulates the core functionaliti
 
 ## 🏗️ Architecture
 
+### Infrastructure
+![Infrastructure](docs/infrastructure.png)
+
+### Event Flow
 ![Ride Matching Flow](docs/architecture.png)
 
 ## ✨ Features
@@ -59,17 +63,17 @@ mvn spring-boot:run -f matching-service/pom.xml &
 ### Test the Flow
 
 ```bash
-# 1. Register a user
+# 1. Register a user (save the token from response)
 curl -X POST http://localhost:8081/api/users/register \
   -H "Content-Type: application/json" \
   -d '{"name":"John","email":"john@example.com","password":"pass123","phoneNumber":"1234567890"}'
 
-# 2. Register a driver
+# 2. Register a driver (save the token from response)
 curl -X POST http://localhost:8082/api/drivers/register \
   -H "Content-Type: application/json" \
   -d '{"name":"Jane","email":"jane@driver.com","password":"pass123","phoneNumber":"9876543210","vehicleNumber":"KA01AB1234","vehicleType":"SEDAN"}'
 
-# 3. Set driver availability + location
+# 3. Set driver online + update location
 curl -X PUT "http://localhost:8082/api/drivers/availability?available=true" \
   -H "Authorization: Bearer <driver_token>"
 
@@ -78,16 +82,20 @@ curl -X PUT http://localhost:8082/api/drivers/location \
   -H "Content-Type: application/json" \
   -d '{"latitude":12.9716,"longitude":77.5946}'
 
-# 4. Request a ride
+# 4. Request a ride (save the rideId from response)
 curl -X POST http://localhost:8083/api/rides/request \
   -H "Authorization: Bearer <user_token>" \
   -H "Content-Type: application/json" \
   -d '{"pickupLat":12.9716,"pickupLng":77.5946,"destLat":12.93,"destLng":77.62}'
 
-# 5. Trigger matching (sync endpoint)
+# 5. Trigger matching
 curl -X POST http://localhost:8084/api/matching/trigger \
   -H "Content-Type: application/json" \
   -d '{"rideId":"<ride_id>","riderId":"123","pickupLocation":{"latitude":12.9716,"longitude":77.5946},"destination":{"latitude":12.93,"longitude":77.62}}'
+
+# 6. Check ride status (should show driverId and "MATCHED" status)
+curl http://localhost:8083/api/rides/<ride_id> \
+  -H "Authorization: Bearer <user_token>"
 ```
 
 ## 📁 Project Structure
