@@ -5,7 +5,7 @@ services:
     image: postgres:14-alpine
     container_name: ride_share_postgres
     ports:
-      - "5432:5432"
+      - "3306:5432"
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=password

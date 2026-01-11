@@ -5,23 +5,23 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ridesharing</groupId>
-    <artifactId>ride-sharing-backend</artifactId>
+    <artifactId>scalable-ride-hailing-platform</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>Ride Sharing Backend - Parent</name>
+    <name>scalable-ride-hailing-platform</name>
     <description>Parent POM for the Ride-Sharing Microservices Project</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.7.5</version> <!-- Or any recent stable version -->
+        <version>3.2.5</version> <!-- Or any recent stable version -->
         <relativePath/>
     </parent>
 
     <modules>
         <!-- Microservice modules will be added here -->
-        <!-- e.g., <module>user-service</module> -->
-        <!-- e.g., <module>driver-service</module> -->
+        <module>user-service</module>
+        <module>driver-service</module>
         <!-- e.g., <module>matching-service</module> -->
         <!-- e.g., <module>trip-service</module> -->
         <!-- e.g., <module>api-gateway</module> -->
